@@ -1,10 +1,12 @@
 use actix_web::{get, post, web, App, HttpRequest, HttpResponse, HttpServer, Responder};
 
+mod employees;
+
 async fn welcome(request: HttpRequest) -> impl Responder {
     let name = request.match_info().get("name").unwrap_or("World");
     format!("Hello {}!", &name)
 }
-
+#[warn(dead_code)]
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
     HttpServer::new(|| {
@@ -12,7 +14,7 @@ async fn main() -> std::io::Result<()> {
             .service(hello)
             .service(echo)
             .route("/hey", web::get().to(manual_hello))
-            .route("/{name}", web::get().to(welcome))
+            .configure(employees::init_routes)
     })
     .bind("127.0.0.1:8181")?
     .run()
