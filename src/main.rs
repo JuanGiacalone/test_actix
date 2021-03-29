@@ -1,6 +1,8 @@
 use actix_web::{get, post, web, App, HttpRequest, HttpResponse, HttpServer, Responder};
 
-mod employees;
+mod application;
+
+
 
 async fn welcome(request: HttpRequest) -> impl Responder {
     let name = request.match_info().get("name").unwrap_or("World");
@@ -14,7 +16,7 @@ async fn main() -> std::io::Result<()> {
             .service(hello)
             .service(echo)
             .route("/hey", web::get().to(manual_hello))
-            .configure(employees::init_routes)
+            
     })
     .bind("127.0.0.1:8181")?
     .run()
