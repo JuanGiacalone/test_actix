@@ -13,8 +13,10 @@ table! {
     users (id) {
         id -> Uuid,
         username -> Text,
+        name -> Text,
         email -> Varchar,
-        password -> Text,
+        state -> Text,
+        password -> Nullable<Text>,
         bio -> Nullable<Text>,
         image -> Nullable<Bytea>,
         created_at -> Timestamp,
