@@ -5,6 +5,8 @@ CREATE TABLE users (
     name TEXT NOT NULL,
     email VARCHAR(254) NOT NULL,
     UNIQUE (username, email),
+    gender VARCHAR(30),
+    birth_date DATE NOT NULL,
     state TEXT NOT NULL,
     password TEXT,
     bio TEXT,

@@ -9,6 +9,8 @@ pub struct User {
     pub username: String,
     pub name: String,
     pub email: String,
+    pub gender: String,
+    pub birth_date: String,
     pub state: String,
     pub password: String,
     pub bio: Option<String>,
@@ -21,8 +23,12 @@ pub struct User {
 #[table_name = "users"]
 pub struct NewUser {
     pub username: String,
+    pub name: String,
     pub email: String,
     pub password: String,
+    pub state: String,
+    pub birth_date: String,
+    pub gender: String,
     pub bio: Option<String>,
     pub image: Option<String>,
 }
@@ -31,7 +37,9 @@ pub struct NewUser {
 #[table_name = "users"]
 pub struct UserChange {
     pub username: Option<String>,
+    pub name: Option<String>,
     pub email: Option<String>,
+    pub state: Option<String>,
     pub password: Option<String>,
     pub bio: Option<String>,
     pub image: Option<String>,
